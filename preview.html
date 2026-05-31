@@ -1,0 +1,245 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1814;--ink2:#4a4640;--ink3:#8a8580;--accent:#c45c2a;--accent2:#e8b49a;--rule:rgba(30,20,10,0.12);--bg:#faf8f4;--card:#ffffff}
+body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--ink);padding:2rem 1.5rem 4rem}
+.cv{max-width:680px;margin:0 auto}
+.hero{display:grid;grid-template-columns:1fr auto;align-items:end;padding-bottom:1.5rem;border-bottom:2px solid var(--ink);margin-bottom:2rem;gap:1rem}
+.hero-left{display:flex;gap:1.25rem;align-items:flex-end}
+.photo-placeholder{width:72px;height:72px;border-radius:6px;border:1.5px dashed var(--accent2);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;flex-shrink:0}
+.photo-placeholder i{color:var(--accent2);font-size:22px}
+.photo-placeholder span{font-size:9px;font-family:'DM Mono',monospace;color:var(--ink3);text-align:center;line-height:1.3}
+.name{font-family:'DM Serif Display',serif;font-size:2.35rem;line-height:1;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap}
+.name em{font-style:italic;color:var(--accent)}
+.role-seo{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:.3rem;font-family:'DM Mono',monospace}
+.role-tag{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-top:.25rem;font-family:'DM Mono',monospace}
+.contact-block{text-align:right}
+.contact-block a,.contact-block span{display:block;font-size:12px;color:var(--ink3);font-family:'DM Mono',monospace;line-height:1.8;text-decoration:none}
+.contact-block a:hover{color:var(--accent)}
+.section{margin-bottom:2rem}
+.section-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-family:'DM Mono',monospace;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.job{display:grid;grid-template-columns:140px 1fr;gap:1rem 1.5rem;padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.job:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.job-meta{padding-top:.15rem}
+.period{font-size:11px;font-family:'DM Mono',monospace;color:var(--ink3);line-height:1.6}
+.location{font-size:11px;font-family:'DM Mono',monospace;color:var(--accent2);margin-top:.25rem}
+.job-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:.15rem}
+.company{font-size:12px;color:var(--accent);letter-spacing:.05em;margin-bottom:.65rem;font-family:'DM Mono',monospace}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.bullets li{font-size:13px;color:var(--ink2);line-height:1.55;padding-left:1rem;position:relative}
+.bullets li::before{content:'—';position:absolute;left:0;color:var(--accent2);font-size:11px;top:.15rem}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.edu-card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1rem}
+.edu-card.wide{grid-column:1/-1}
+.edu-deg{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:.2rem;line-height:1.35}
+.edu-inst{font-size:11px;color:var(--accent);font-family:'DM Mono',monospace;margin-bottom:.3rem}
+.edu-period{font-size:10px;color:var(--ink3);font-family:'DM Mono',monospace}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.skill-chip{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:.45rem .75rem;font-size:12px;color:var(--ink2);line-height:1.35}
+.skill-chip b{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-family:'DM Mono',monospace;margin-bottom:.25rem;font-weight:500}
+.soft-skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.soft-pill{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:.5rem .75rem;display:flex;align-items:center;gap:.5rem}
+.soft-pill i{color:var(--accent);font-size:15px;flex-shrink:0}
+.soft-pill-text{font-size:12px;color:var(--ink2);font-weight:500;line-height:1.3}
+.soft-pill-sub{font-size:10px;color:var(--ink3);font-family:'DM Mono',monospace;margin-top:.1rem}
+.hobbies-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.hobby-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:.6rem .5rem;display:flex;flex-direction:column;align-items:center;gap:.3rem;text-align:center}
+.hobby-card i{color:var(--accent);font-size:20px}
+.hobby-name{font-size:11px;font-weight:600;color:var(--ink)}
+.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.lang-row{display:flex;flex-direction:column;gap:.5rem}
+.lang-item{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--rule)}
+.lang-item:last-child{border-bottom:none}
+.lang-name{font-size:13px;font-weight:500;color:var(--ink)}
+.lang-level{font-size:10px;font-family:'DM Mono',monospace;color:var(--ink3);background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:2px 6px}
+.cert-list{display:flex;flex-direction:column;gap:.5rem}
+.cert-item{font-size:12px;color:var(--ink2);padding:.4rem .75rem;background:var(--card);border:1px solid var(--rule);border-radius:4px;line-height:1.4}
+.cert-item span{display:block;font-size:10px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:.15rem}
+</style>
+
+<div class="cv">
+  <div class="hero">
+    <div class="hero-left">
+      
+<div class="photo-placeholder" style="border:none;background:none;padding:0;">
+  <img src="profile.png" alt="Shahid Hussain Ansari" style="width:95px;height:95px;border-radius:10px;object-fit:cover;">
+</div>
+
+      <div>
+        <div class="name">Shahid <em>Hussain</em> Ansari</div>
+        <div class="role-seo">SEO Specialist</div>
+        <div class="role-tag">Digital Marketing · Berlin, Germany</div>
+      </div>
+    </div>
+    <div class="contact-block">
+      <span>+49 160 1595890</span>
+      <a href="mailto:sahidhussain204@gmail.com">sahidhussain204@gmail.com</a>
+      <a href="https://linkedin.com/in/shahidhussain31">linkedin.com/in/shahidhussain31</a>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <div class="section-label">Professional Summary</div>
+    <p style="font-size:13px;line-height:1.7;color:#4a4640;">
+      SEO Specialist with 3+ years of experience in technical SEO, on-page optimization,
+      keyword research, analytics, local SEO, and performance reporting. Experienced in
+      conducting technical audits, improving search visibility, managing enterprise websites,
+      and delivering data-driven insights using GA4, Search Console, Ahrefs, SEMrush,
+      Screaming Frog, and Looker Studio.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Experience</div>
+    <div class="job">
+      <div class="job-meta"><div class="period">02/2024 – 04/2026</div><div class="location">Doha, Qatar</div></div>
+      <div>
+        <div class="job-title">Digital Marketing Executive</div>
+        <div class="company">LuLu Retail PLC</div>
+        <ul class="bullets">
+          <li>Keyword research & mapping using Ahrefs and Google Trends</li>
+          <li>Technical SEO audits with Screaming Frog, AI tools & Search Console</li>
+          <li>Traffic analysis via GA4 and Looker Studio dashboards</li>
+          <li>Monthly and bi-weekly SEO performance reports with actionable insights</li>
+          <li>Baseline SEO audits and competitor analysis</li>
+          <li>Google Business Profile & Maps optimisation for local SEO</li>
+          <li>On-page SEO, schema markup, EEAT content optimisation & structured data</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-meta"><div class="period">11/2023 – 01/2024</div><div class="location">Doha, Qatar</div></div>
+      <div>
+        <div class="job-title">Digital Marketer</div>
+        <div class="company">Forward Group</div>
+        <ul class="bullets">
+          <li>SEO reporting and keyword tracking via Ahrefs & Search Console</li>
+          <li>Technical and on-page SEO audits to improve site performance</li>
+          <li>Bi-weekly reports and Looker Studio dashboards for SEO analysis</li>
+          <li>Keyword research, mapping, and competitor analysis</li>
+          <li>Google Maps and Business Profile optimisation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-meta"><div class="period">08/2022 – 08/2023</div><div class="location">India</div></div>
+      <div>
+        <div class="job-title">Performance Associate</div>
+        <div class="company">Performance-io</div>
+        <ul class="bullets">
+          <li>Baseline, technical, and content audits for multiple clients</li>
+          <li>SEO analysis & reporting with Screaming Frog, Ahrefs, GA4 & Search Console</li>
+          <li>Monthly performance reports and dashboards in Looker Studio</li>
+          <li>Keyword research, clustering, and mapping</li>
+          <li>Indexing, crawlability, Core Web Vitals & structured data analysis</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-meta"><div class="period">05/2023 – 06/2023</div><div class="location">India</div></div>
+      <div>
+        <div class="job-title">PPC & SEO Intern</div>
+        <div class="company">HM Digital Agency</div>
+        <ul class="bullets">
+          <li>Keyword research and Google Ads optimisation support</li>
+          <li>Technical SEO audits and backlink analysis</li>
+          <li>SEO reporting and performance monitoring via GA4 & Search Console</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card wide">
+        <div class="edu-deg">MSc Strategic Digital Marketing</div>
+        <div class="edu-inst">Arden University · Berlin</div>
+        <div class="edu-period">05/2026 – Present</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">MBA + PG Programme in Digital Marketing</div>
+        <div class="edu-inst">Bengal Institute of Business Studies · India</div>
+        <div class="edu-period">08/2021 – 08/2023</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">Bachelor of Arts in Tourism Studies</div>
+        <div class="edu-inst">IGNOU · India</div>
+        <div class="edu-period">08/2018 – 07/2021</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Digital Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip"><b>Analytics & Reporting</b>GA4, Google Search Console, Looker Studio, Adobe Analytics, SEMrush, Ahrefs</div>
+      <div class="skill-chip"><b>Technical SEO</b>Screaming Frog, Baseline Audits, Core Web Vitals, Crawlability, Indexing</div>
+      <div class="skill-chip"><b>On-Page & Content</b>Keyword Research, Mapping, Competitor Analysis, Schema Markup, Structured Data, EEAT</div>
+      <div class="skill-chip"><b>Local SEO & Ads</b>Google Business Profile, Google Maps Optimisation, Google Ads</div>
+      <div class="skill-chip"><b>AI Tools</b>ChatGPT, Canva AI, AI-assisted SEO & Content Optimisation</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Soft Skills</div>
+    <div class="soft-skills-grid">
+      <div class="soft-pill"><i class="ti ti-chart-line" aria-hidden="true"></i><div><div class="soft-pill-text">Analytical Thinking</div><div class="soft-pill-sub">Data-driven decisions</div></div></div>
+      <div class="soft-pill"><i class="ti ti-report-analytics" aria-hidden="true"></i><div><div class="soft-pill-text">Reporting & Insights</div><div class="soft-pill-sub">Clear stakeholder comms</div></div></div>
+      <div class="soft-pill"><i class="ti ti-bulb" aria-hidden="true"></i><div><div class="soft-pill-text">Problem Solving</div><div class="soft-pill-sub">SEO troubleshooting</div></div></div>
+      <div class="soft-pill"><i class="ti ti-users" aria-hidden="true"></i><div><div class="soft-pill-text">Cross-functional Teamwork</div><div class="soft-pill-sub">Multi-client collaboration</div></div></div>
+      <div class="soft-pill"><i class="ti ti-clock" aria-hidden="true"></i><div><div class="soft-pill-text">Time Management</div><div class="soft-pill-sub">Deadline-driven delivery</div></div></div>
+      <div class="soft-pill"><i class="ti ti-refresh" aria-hidden="true"></i><div><div class="soft-pill-text">Adaptability</div><div class="soft-pill-sub">Fast-evolving SEO landscape</div></div></div>
+      <div class="soft-pill"><i class="ti ti-writing" aria-hidden="true"></i><div><div class="soft-pill-text">Content Strategy Thinking</div><div class="soft-pill-sub">EEAT & user intent focus</div></div></div>
+      <div class="soft-pill"><i class="ti ti-eye" aria-hidden="true"></i><div><div class="soft-pill-text">Attention to Detail</div><div class="soft-pill-sub">Audits & structured data</div></div></div>
+      <div class="soft-pill"><i class="ti ti-world" aria-hidden="true"></i><div><div class="soft-pill-text">Multicultural Awareness</div><div class="soft-pill-sub">4 languages, 3 countries</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Hobbies & Interests</div>
+    <div class="hobbies-grid">
+      <div class="hobby-card">
+        <i class="ti ti-device-gamepad-2" aria-hidden="true"></i>
+        <div class="hobby-name">Gaming</div>
+      </div>
+      <div class="hobby-card">
+        <i class="ti ti-walk" aria-hidden="true"></i>
+        <div class="hobby-name">Walking</div>
+      </div>
+      <div class="hobby-card">
+        <i class="ti ti-chess" aria-hidden="true"></i>
+        <div class="hobby-name">Chess</div>
+      </div>
+      <div class="hobby-card">
+        <i class="ti ti-camera" aria-hidden="true"></i>
+        <div class="hobby-name">Photography</div>
+      </div>
+      <div class="hobby-card">
+        <i class="ti ti-tools-kitchen-2" aria-hidden="true"></i>
+        <div class="hobby-name">Cooking</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="section">
+      <div class="section-label">Languages</div>
+      <div class="lang-row">
+        <div class="lang-item"><span class="lang-name">Hindi / Urdu</span><span class="lang-level">Native</span></div>
+        <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">C1</span></div>
+        <div class="lang-item"><span class="lang-name">Bengali</span><span class="lang-level">C1</span></div>
+        <div class="lang-item"><span class="lang-name">German</span><span class="lang-level">A2</span></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item"><span>Google Certified</span>Analytics GA4 · Display Ads · Video Ads</div>
+        <div class="cert-item"><span>SEMrush Academy</span>SEO Fundamentals · On-Page & Technical SEO</div>
+      </div>
+    </div>
+  </div>
+</div>
